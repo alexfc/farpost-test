@@ -14,4 +14,12 @@ class BlogController extends Controller
     {
         return $this->render('BlogBundle:Blog:index.html.twig');
     }
+
+    /**
+     * @Route("/posts/{id}")
+     */
+    public function showAction($id)
+    {
+        return $this->render('BlogBundle:Blog:show.html.twig');
+    }
 }
