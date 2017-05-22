@@ -10,6 +10,10 @@ class PostRepository extends EntityRepository
 {
     const POSTS_PER_PAGE = 10;
 
+    /**
+     * @param int $currentPage
+     * @return Paginator
+     */
     public function getLatestPosts($currentPage = 1)
     {
         $query = $this->createQueryBuilder('p')
@@ -22,6 +26,11 @@ class PostRepository extends EntityRepository
         return $paginator;
     }
 
+    /**
+     * @param $dql
+     * @param int $page
+     * @return Paginator
+     */
     public function paginate($dql, $page = 1)
     {
         $paginator = new Paginator($dql);

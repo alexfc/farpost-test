@@ -9,11 +9,11 @@
     <div class="col-md-12">
         <div class="well">
             <div class="media">
-                <a class="pull-left" href="#">
+                <a class="pull-left" href="{{ path('post_show', {id: post.getId}) }}">
                     <img class="media-object" src="http://placekitten.com/150/150">
                 </a>
                 <div class="media-body">
-                    <a href="/posts/{{  post.getId }}"><h4 class="media-heading">{{ post.getTitle | e }}</h4></a>
+                    <a href="{{ path('post_show', {id: post.getId}) }}"><h4 class="media-heading">{{ post.getTitle | e }}</h4></a>
                     <p class="text-right">By Admin</p>
                     <p>{{ post.getContent[:500] ~ '...' }}</p>
                     <ul class="list-inline list-unstyled">
