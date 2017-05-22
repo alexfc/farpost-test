@@ -2,6 +2,7 @@
 
 namespace BlogBundle\Controller;
 
+use BlogBundle\Repository\PostRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -10,7 +11,7 @@ class BlogController extends Controller
 {
 
     /**
-     * @Route("/{page}", defaults={"page" = 1})
+     * @Route("/{page}", defaults={"page" = 1}, name="blog_index")
      */
     public function indexAction($page)
     {
@@ -24,11 +25,15 @@ class BlogController extends Controller
             throw new NotFoundHttpException('404. Page not found');
         }
 
-        return $this->render('BlogBundle:Blog:index.html.twig', compact('posts', $paginator));
+        $maxPages = ceil($paginator->count() / PostRepository::POSTS_PER_PAGE);
+        $currentPage = $page;
+        $routeName = 'blog_index';
+
+        return $this->render('BlogBundle:Blog:index.html.twig', compact('posts', 'maxPages', 'currentPage', 'routeName'));
     }
 
     /**
-     * @Route("/posts/{id}")
+     * @Route("/posts/{id}", name="post_show")
      */
     public function showAction($id)
     {

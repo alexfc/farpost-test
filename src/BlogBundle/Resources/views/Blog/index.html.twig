@@ -24,4 +24,6 @@
         </div>
     </div>
     {% endfor %}
+    {% include 'BlogBundle:Blog:pagination.html.twig' with {'maxPages': maxPages, 'thisPage': currentPage, 'routeName': routeName} %}
 {% endblock %}
+
