@@ -1,18 +1,12 @@
 {% extends('BlogBundle:Blog:layout.html.twig') %}
 
 {% block title %}
-    Some post name
+    {{ post.getTitle | e }}
 {% endblock %}
 
 {% block content %}
     <div class="col-md-12">
-        <h1>Some post name</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque beatae commodi cum deserunt illo neque nihil numquam, porro possimus praesentium quae quaerat quidem, tempora temporibus veniam. Adipisci ducimus illum vel.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque beatae commodi cum deserunt illo neque nihil numquam, porro possimus praesentium quae quaerat quidem, tempora temporibus veniam. Adipisci ducimus illum vel.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque beatae commodi cum deserunt illo neque nihil numquam, porro possimus praesentium quae quaerat quidem, tempora temporibus veniam. Adipisci ducimus illum vel.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque beatae commodi cum deserunt illo neque nihil numquam, porro possimus praesentium quae quaerat quidem, tempora temporibus veniam. Adipisci ducimus illum vel.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque beatae commodi cum deserunt illo neque nihil numquam, porro possimus praesentium quae quaerat quidem, tempora temporibus veniam. Adipisci ducimus illum vel.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque beatae commodi cum deserunt illo neque nihil numquam, porro possimus praesentium quae quaerat quidem, tempora temporibus veniam. Adipisci ducimus illum vel.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque beatae commodi cum deserunt illo neque nihil numquam, porro possimus praesentium quae quaerat quidem, tempora temporibus veniam. Adipisci ducimus illum vel.</p>
+        <h1>{{ post.getTitle | e }}</h1>
+        <p>{{ post.getContent | e }}</p>
     </div>
 {% endblock %}

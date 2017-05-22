@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+    {% for post in posts %}
     <div class="col-md-12">
         <div class="well">
             <div class="media">
@@ -12,17 +13,15 @@
                     <img class="media-object" src="http://placekitten.com/150/150">
                 </a>
                 <div class="media-body">
-                    <a href="/posts/1"><h4 class="media-heading">Some post name</h4></a>
+                    <a href="/posts/{{  post.getId }}"><h4 class="media-heading">{{ post.getTitle | e }}</h4></a>
                     <p class="text-right">By Admin</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
-                        Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
-                        dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan.
-                        Aliquam in felis sit amet augue.</p>
+                    <p>{{ post.getContent[:500] ~ '...' }}</p>
                     <ul class="list-inline list-unstyled">
-                        <li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
+                        <li><span><i class="glyphicon glyphicon-calendar"></i> {{ post.getCreatedAt.diffForHumans }} </span></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+    {% endfor %}
 {% endblock %}
